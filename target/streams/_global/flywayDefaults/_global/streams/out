@@ -1,0 +1,32 @@
+[debug] Multiple databases found that handle url 'jdbc:postgresql://localhost:5432/account_poc_write_side'. CockroachDB, PostgreSQL
+[debug] Scanning for classpath resources at 'classpath:db/callback' ...
+[debug] Determining location urls for classpath:db/callback using ClassLoader java.net.URLClassLoader@74b57e45 ...
+[debug] Unable to resolve location classpath:db/callback.
+[info] Flyway Community Edition 7.4.0 by Redgate
+[debug] AWS SDK available: false
+[debug] Google Cloud Storage available: false
+[debug] Scanning for filesystem resources at 'sql\account_poc_write_side'
+[debug] Scanning for resources in path: sql\account_poc_write_side (sql\account_poc_write_side)
+[debug] Found filesystem resource: sql\account_poc_write_side\V1__Intial_writeside_1.sql
+[info] Database: jdbc:postgresql://localhost:5432/account_poc_write_side (PostgreSQL 14.1)
+[debug] Driver  : PostgreSQL JDBC Driver 42.2.10
+[debug] DDL Transactions Supported: true
+[debug] Schemas: 
+[debug] Default schema: null
+[warn] Flyway upgrade recommended: org.flywaydb.core.internal.database.postgresql.PostgreSQLDatabaseType@49edb1db 14.1 is newer than this version of Flyway and support has not been tested. The latest supported version of org.flywaydb.core.internal.database.postgresql.PostgreSQLDatabaseType@49edb1db is 13.
+[debug] Scanning for SQL callbacks ...
+[debug] Validating migrations ...
+[debug] Filtering out resource: sql\account_poc_write_side\V1__Intial_writeside_1.sql (filename: V1__Intial_writeside_1.sql)
+[info] Successfully validated 1 migration (execution time 00:00.036s)
+[debug] Skipping creation of existing schema: "public"
+[info] Creating Schema History table "public"."flyway_schema_history" ...
+[debug] Parsing  ...
+[debug] Created Schema History table "public"."flyway_schema_history"
+[info] Current version of schema "public": << Empty Schema >>
+[debug] Parsing V1__Intial_writeside_1.sql ...
+[debug] Starting migration of schema "public" to version "1 - Intial writeside 1" ...
+[info] Migrating schema "public" to version "1 - Intial writeside 1"
+[debug] Successfully completed migration of schema "public" to version "1 - Intial writeside 1"
+[debug] Schema History table "public"."flyway_schema_history" successfully updated to reflect changes
+[info] Successfully applied 1 migration to schema "public" (execution time 00:00.075s)
+[debug] Memory usage: 163 of 994M
