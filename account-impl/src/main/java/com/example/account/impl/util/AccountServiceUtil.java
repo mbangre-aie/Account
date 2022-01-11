@@ -10,10 +10,7 @@ package com.example.account.impl.util;
 
 import akka.Done;
 import akka.cluster.sharding.typed.javadsl.EntityRef;
-import com.example.account.api.request.CreateAccountRequest;
-import com.example.account.api.request.DepositRequest;
-import com.example.account.api.request.TransferRequest;
-import com.example.account.api.request.WithdrawRequest;
+import com.example.account.api.request.*;
 import com.example.account.impl.command.AccountCommand;
 import com.example.account.impl.entity.Account;
 
@@ -42,5 +39,9 @@ public class AccountServiceUtil {
     }
     public CompletionStage<Done> transfer(TransferRequest request, EntityRef<AccountCommand> ref) {
         return ref.<Done>ask(replyTo -> new AccountCommand.Transfer(request,replyTo), askTimeout);
+    }
+
+    public CompletionStage<Done> emailUpdate(EmailUpdateRequest request, EntityRef<AccountCommand> ref) {
+        return ref.<Done>ask(replyTo -> new AccountCommand.EmailUpdate(request,replyTo), askTimeout);
     }
 }

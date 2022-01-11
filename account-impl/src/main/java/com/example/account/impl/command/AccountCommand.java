@@ -32,6 +32,20 @@ public interface AccountCommand extends Jsonable {
     @SuppressWarnings("serial")
     @Value
     @JsonDeserialize
+    final class EmailUpdate implements AccountCommand {
+        public final ActorRef<Done> replyTo;
+        public final EmailUpdateRequest request;
+
+        @JsonCreator
+        public EmailUpdate(EmailUpdateRequest request, ActorRef<Done> replyTo) {
+            this.request = request;
+            this.replyTo = replyTo;
+        }
+    }
+
+    @SuppressWarnings("serial")
+    @Value
+    @JsonDeserialize
     final class Deposit implements AccountCommand {
         public final ActorRef<Done> replyTo;
         public final DepositRequest request;

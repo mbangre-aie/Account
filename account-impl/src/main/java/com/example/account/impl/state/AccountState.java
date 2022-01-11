@@ -42,6 +42,27 @@ public final class AccountState implements CompressedJsonable {
                         )
                 ));
     }
+
+    public AccountState emailUpdate(EmailUpdateRequest request) {
+
+        Transaction transaction = new Transaction(request.getAccountId(), UUID.randomUUID().toString(),
+                null, null,null);
+        List<Transaction> transactions = account.get().getTransactions();
+        transactions.add(transaction);
+
+        AccountState accountState = new AccountState(
+                Optional.of(
+                        new Account(
+                                account.get().accountId,
+                                account.get().name,
+                                account.get().email.replace(account.get().email,request.getEmail()),
+                                account.get().balance,
+                                account.get().address,
+                                transactions
+                        )
+                ));
+        return accountState;
+    }
     public AccountState deposit(DepositRequest request) {
         Transaction transaction = new Transaction(request.getAccountId(), UUID.randomUUID().toString(),
                 "DEPOSIT", null, request.getAmount());

@@ -79,6 +79,11 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
                         Effect()
                                 .persist(new AccountEvent.TransactionMade(cmd.request))
                                 .thenReply(cmd.replyTo, __ -> Done.getInstance())
+                )
+                .onCommand(AccountCommand.EmailUpdate.class, (state, cmd) ->
+                        Effect()
+                                .persist(new AccountEvent.EmailUpdated(cmd.request))
+                                .thenReply(cmd.replyTo, __ -> Done.getInstance())
                 );
         return builder.build();
     }
@@ -95,6 +100,7 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
         builder
                 .forAnyState()
                 .onEvent(AccountEvent.AccountCreated.class, (state, evt) ->
+
                         state.createAccount(evt.request)
                 )
                 .onEvent(AccountEvent.Deposited.class, (state, evt) ->
@@ -107,7 +113,10 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
                         state.transfer(evt.request)
                 )
                 .onEvent(AccountEvent.TransactionMade.class, (state, event) ->
-                        state.performTransaction(event.request));
+                        state.performTransaction(event.request)
+                )
+                .onEvent(AccountEvent.EmailUpdated.class, (state, event) ->
+                        state.emailUpdate(event.request));
         return builder.build();
     }
 

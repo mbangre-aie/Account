@@ -6,9 +6,7 @@ import akka.cluster.sharding.typed.javadsl.ClusterSharding;
 import akka.cluster.sharding.typed.javadsl.Entity;
 import akka.cluster.sharding.typed.javadsl.EntityRef;
 import akka.japi.Pair;
-import com.example.account.api.request.DepositRequest;
-import com.example.account.api.request.TransferRequest;
-import com.example.account.api.request.WithdrawRequest;
+import com.example.account.api.request.*;
 import com.example.account.api.response.GetAllAccountsResponse;
 import com.example.account.impl.entity.Transaction;
 import com.example.account.impl.event.AccountEvent;
@@ -19,18 +17,19 @@ import com.lightbend.lagom.javadsl.broker.TopicProducer;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRegistry;
 import com.example.account.api.AccountService;
 import com.example.account.api.publish.AccountPublishEvent;
-import com.example.account.api.request.CreateAccountRequest;
 import com.example.account.api.response.GetAccountResponse;
 import com.example.account.impl.aggregate.AccountAggregate;
 import com.example.account.impl.command.AccountCommand;
 import com.example.account.impl.util.AccountPublishEventConverter;
 import com.example.account.impl.util.AccountServiceUtil;
+import com.sun.xml.internal.ws.util.CompletedFuture;
 import com.typesafe.config.Config;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -108,11 +107,26 @@ public class AccountServiceImpl implements AccountService {
     public ServiceCall<NotUsed, GetAllAccountsResponse> getAllAccounts(){
         return notUsed -> {
             return accountRepository.getAllAccounts().thenApply(list -> {
-                return list
-                        .stream()
+                return list.stream()
                         .map(a -> new GetAllAccountsResponse.Account(a.accountId, a.name, a.email, a.balance))
                         .collect(Collectors.toList());
             }).thenApply(accounts -> new GetAllAccountsResponse(accounts));
+        };
+    }
+
+   /* @Override
+    public ServiceCall<EmailUpdateRequest, Done> emailUpdate() {
+        return request -> {
+       //     return accountServiceUtil.emailUpdate(request, accountAggregateRef(request.getAccountId()));
+            return CompletedFuture(()->"adakl");
+        };
+    }*/
+
+    @Override
+    public ServiceCall<EmailUpdateRequest,String> emailUpdate() {
+        return request -> {
+            //     return accountServiceUtil.emailUpdate(request, accountAggregateRef(request.getAccountId()));
+            return CompletableFuture.supplyAsync(()->"adhandland");
         };
     }
 

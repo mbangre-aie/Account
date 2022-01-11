@@ -105,6 +105,22 @@ public interface AccountEvent extends Jsonable, AggregateEvent<AccountEvent> {
         }
     }
 
+    @Value
+    @JsonDeserialize
+    final class EmailUpdated implements AccountEvent {
+
+        public final EmailUpdateRequest request;
+
+        @JsonCreator
+        public EmailUpdated(EmailUpdateRequest request) {
+            this.request = request;
+        }
+
+        @Override
+        public String id() {
+            return request.getAccountId();
+        }
+    }
     @Override
     default AggregateEventTagger<AccountEvent> aggregateTag() {
         return TAG;
