@@ -1,2 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Madhan\lagom5\account\account\account-impl\src\main\java\com\example\account\impl\AccountServiceImpl.java:25:1: package com.sun.xml.internal.ws.util does not exist[0m
-[0m[[0m[31merror[0m] [0m[0mcom.sun.xml.internal.ws.util.CompletedFuture[0m
+[debug] Acquiring lock on file C:\Users\Madhan\lagom5\account\account\project\target\.sbt-compilation-infos\account-impl-compile\.sbt-idea-lock ...
+[debug] Releasing lock on file C:\Users\Madhan\lagom5\account\account\project\target\.sbt-compilation-infos\account-impl-compile\.sbt-idea-lock.
