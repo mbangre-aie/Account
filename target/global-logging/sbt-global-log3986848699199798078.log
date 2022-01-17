@@ -1,0 +1,5 @@
+[debug] > Exec(runAll, None, None)
+[debug] Evaluating tasks: runAll
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] Service locator is running at http://0:0:0:0:0:0:0:0:9008
+[info] Service gateway is running at http://0:0:0:0:0:0:0:0:9000

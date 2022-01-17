@@ -4,7 +4,7 @@
  * This file is part of ARC project.
  * Unauthorised copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
- * Written by ngollapothu
+ * Written by madhan
  *******************************************************/
 package com.example.account.impl.util;
 
@@ -32,7 +32,10 @@ public class AccountPublishEventConverter {
         } else if(event instanceof AccountEvent.Transfered){
             log.info("Transfered event published, id::{}", event.id());
             return new AccountPublishEvent.Transfered(convertToAccountDetails(account));
-        } else {
+        } else if(event instanceof AccountEvent.EmailUpdated) {
+            log.info("emailupdated event published, id::{}", event.id());
+            return new AccountPublishEvent.EmailUpdated(convertToAccountDetails(account));
+        }else {
             log.error("Try to convert non publish AccountEvent: {}", event);
             throw new IllegalArgumentException("non publish AccountEvent");
         }

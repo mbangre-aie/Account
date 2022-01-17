@@ -72,18 +72,18 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
                     .thenReply(cmd.replyTo, __ -> Done.getInstance())
             )
             .onCommand(AccountCommand.GetAccount.class, (state, cmd) ->
-                    Effect().none()
-                            .thenReply(cmd.replyTo, __ -> state.account)
+                Effect().none()
+                    .thenReply(cmd.replyTo, __ -> state.account)
             )
-             .onCommand(AccountCommand.Transaction.class, (state, cmd) ->
-                        Effect()
-                                .persist(new AccountEvent.TransactionMade(cmd.request))
-                                .thenReply(cmd.replyTo, __ -> Done.getInstance())
-                )
-                .onCommand(AccountCommand.EmailUpdate.class, (state, cmd) ->
-                        Effect()
-                                .persist(new AccountEvent.EmailUpdated(cmd.request))
-                                .thenReply(cmd.replyTo, __ -> Done.getInstance())
+            .onCommand(AccountCommand.Transaction.class, (state, cmd) ->
+                Effect()
+                     .persist(new AccountEvent.TransactionMade(cmd.request))
+                     .thenReply(cmd.replyTo, __ -> Done.getInstance())
+            )
+            .onCommand(AccountCommand.EmailUpdate.class, (state, cmd) ->
+                Effect()
+                      .persist(new AccountEvent.EmailUpdated(cmd.request))
+                      .thenReply(cmd.replyTo, __ -> Done.getInstance())
                 );
         return builder.build();
     }
@@ -112,11 +112,11 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
                 .onEvent(AccountEvent.Transfered.class, (state, evt) ->
                         state.transfer(evt.request)
                 )
-                .onEvent(AccountEvent.TransactionMade.class, (state, event) ->
-                        state.performTransaction(event.request)
+                .onEvent(AccountEvent.TransactionMade.class, (state, evt) ->
+                        state.performTransaction(evt.request)
                 )
-                .onEvent(AccountEvent.EmailUpdated.class, (state, event) ->
-                        state.emailUpdate(event.request));
+                .onEvent(AccountEvent.EmailUpdated.class, (state, evt) ->
+                        state.emailUpdate(evt.request));
         return builder.build();
     }
 
@@ -124,5 +124,4 @@ public class AccountAggregate extends EventSourcedBehaviorWithEnforcedReplies<Ac
     public Set<String> tagsFor(AccountEvent event) {
         return AkkaTaggerAdapter.fromLagom(entityContext, AccountEvent.TAG).apply(event);
     }
-
 }

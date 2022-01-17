@@ -22,7 +22,6 @@ import com.example.account.impl.aggregate.AccountAggregate;
 import com.example.account.impl.command.AccountCommand;
 import com.example.account.impl.util.AccountPublishEventConverter;
 import com.example.account.impl.util.AccountServiceUtil;
-import com.sun.xml.internal.ws.util.CompletedFuture;
 import com.typesafe.config.Config;
 import lombok.extern.slf4j.Slf4j;
 
@@ -114,26 +113,25 @@ public class AccountServiceImpl implements AccountService {
         };
     }
 
-   /* @Override
-    public ServiceCall<EmailUpdateRequest, Done> emailUpdate() {
-        return request -> {
-       //     return accountServiceUtil.emailUpdate(request, accountAggregateRef(request.getAccountId()));
-            return CompletedFuture(()->"adakl");
-        };
-    }*/
 
-    @Override
+   /* @Override
     public ServiceCall<EmailUpdateRequest,String> emailUpdate() {
         return request -> {
             //     return accountServiceUtil.emailUpdate(request, accountAggregateRef(request.getAccountId()));
             return CompletableFuture.supplyAsync(()->"adhandland");
         };
-    }
+    }*/
 
     @Override
     public ServiceCall<CreateAccountRequest, Done> createAccount() {
         return request -> {
             return accountServiceUtil.createAccount(request, accountAggregateRef(request.getAccountId()));
+        };
+    }
+    @Override
+    public ServiceCall<EmailUpdateRequest, Done> emailUpdate() {
+        return request -> {
+            return accountServiceUtil.emailUpdate(request, accountAggregateRef(request.getAccountId()));
         };
     }
 
@@ -169,7 +167,8 @@ public class AccountServiceImpl implements AccountService {
                                     return (pair.first() instanceof AccountEvent.AccountCreated)
                                             || (pair.first() instanceof AccountEvent.Deposited)
                                             || (pair.first() instanceof AccountEvent.Withdrawn)
-                                            || (pair.first() instanceof AccountEvent.Transfered);
+                                            || (pair.first() instanceof AccountEvent.Transfered)
+                                            || (pair.first() instanceof AccountEvent.EmailUpdated);
                                 }
                         )
                         .mapAsync(

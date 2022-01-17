@@ -12,7 +12,8 @@ import java.math.BigDecimal;
         @JsonSubTypes.Type(AccountPublishEvent.AccountCreated.class),
         @JsonSubTypes.Type(AccountPublishEvent.Deposited.class),
         @JsonSubTypes.Type(AccountPublishEvent.Withdrawn.class),
-        @JsonSubTypes.Type(AccountPublishEvent.Transfered.class)
+        @JsonSubTypes.Type(AccountPublishEvent.Transfered.class),
+        @JsonSubTypes.Type(AccountPublishEvent.EmailUpdated.class)
 })
 public interface AccountPublishEvent {
     String entityId();
@@ -65,6 +66,20 @@ public interface AccountPublishEvent {
         public final Account account;
 
         public Transfered(Account account) {
+            this.account = account;
+        }
+
+        public String entityId(){
+            return this.account.accountId;
+        }
+    }
+
+    @JsonTypeName(value = "email-updated")
+    @Value
+    final class EmailUpdated implements AccountPublishEvent {
+        public final Account account;
+
+        public EmailUpdated(Account account) {
             this.account = account;
         }
 

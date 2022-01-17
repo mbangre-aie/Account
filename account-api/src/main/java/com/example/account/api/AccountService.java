@@ -23,7 +23,8 @@ public interface AccountService extends Service {
     ServiceCall<WithdrawRequest, Done> withdraw();
     ServiceCall<TransferRequest, Done> transfer();
     ServiceCall<NotUsed, GetAllAccountsResponse> getAllAccounts();
-    ServiceCall<EmailUpdateRequest, String> emailUpdate();
+   // ServiceCall<EmailUpdateRequest, String> emailUpdate();
+    ServiceCall<EmailUpdateRequest, Done> emailUpdate();
 
     /**
      * This gets published to Kafka.

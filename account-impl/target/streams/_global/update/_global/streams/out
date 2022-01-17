@@ -1,4 +1,2 @@
 [debug] not up to date. inChanged = true, force = false
 [debug] Updating account-impl...
-[debug] Done updating account-impl
-[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.

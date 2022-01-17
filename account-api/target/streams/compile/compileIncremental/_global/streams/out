@@ -1,52 +1,6 @@
 [0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
 [0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
-[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 19 products, 9 sources, 3 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 21 products, 10 sources, 3 libraries[0m
 [0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/account-api/src/main/java/com/example/account/api/request/TransferRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/publish/AccountPublishEvent.java, ${BASE}/account-api/src/main/java/com/example/account/api/AccountService.java, ${BASE}/account-api/src/main/java/com/example/account/api/request/EmailUpdateRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/request/WithdrawRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/request/TransactionRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/response/GetAllAccountsResponse.java, ${BASE}/account-api/src/main/java/com/example/account/api/request/CreateAccountRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/response/GetAccountResponse.java, ${BASE}/account-api/src/main/java/com/example/account/api/request/DepositRequest.java)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(${BASE}/account-api/src/main/java/com/example/account/api/request/EmailUpdateRequest.java), removed = Set(), changed = Set(${BASE}/account-api/src/main/java/com/example/account/api/AccountService.java), unmodified = ...),Set(),Set(),API Changes: Set())[0m
-[0m[[0m[0mdebug[0m] [0m[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial source changes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	removed: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	added: Set(${BASE}/account-api/src/main/java/com/example/account/api/request/EmailUpdateRequest.java)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(${BASE}/account-api/src/main/java/com/example/account/api/AccountService.java)[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(com.example.account.api.AccountService)[0m
-[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(com.example.account.api.AccountService)[0m
-[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(${BASE}/account-api/src/main/java/com/example/account/api/request/EmailUpdateRequest.java, ${BASE}/account-api/src/main/java/com/example/account/api/AccountService.java)[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: com.example.account.api.AccountService[0m
-[0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
-[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Java sources to C:\Users\Madhan\lagom5\account\account\account-api\target\scala-2.13\classes ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mAttempting to call com.sun.tools.javac.api.JavacTool@78c41b2 directly...[0m
-[0m[[0m[0mdebug[0m] [0m[0mJava compilation took 6.6771011 s[0m
-[0m[[0m[0mdebug[0m] [0m[0mJava analysis took 0.2242225 s[0m
-[0m[[0m[0mdebug[0m] [0m[0mJava compilation + analysis took 6.9378228 s[0m
-[0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from com.example.account.api.AccountService...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: com.example.account.api.AccountService[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(com.example.account.api.AccountService)[0m
-[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(com.example.account.api.AccountService,ModifiedNames(changes = UsedName(emailUpdate,[Default]))) invalidates 1 classes due to The com.example.account.api.AccountService has the following regular definitions changed:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	UsedName(emailUpdate,[Default]).[0m
-[0m[[0m[0mdebug[0m] [0m[0m  > by transitive inheritance: Set(com.example.account.api.AccountService)[0m
-[0m[[0m[0mdebug[0m] [0m[0m  > [0m
-[0m[[0m[0mdebug[0m] [0m[0m  > [0m
-[0m[[0m[0mdebug[0m] [0m[0m        [0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from com.example.account.api.request.EmailUpdateRequest...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: com.example.account.api.request.EmailUpdateRequest[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(com.example.account.api.request.EmailUpdateRequest)[0m
-[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(com.example.account.api.request.EmailUpdateRequest,ModifiedNames(changes = UsedName(wait,[Default]), UsedName(notifyAll,[Default]), UsedName(EmailUpdateRequest,[Default]), UsedName(toString,[Default]), UsedName(equals,[Default]), UsedName(accountId,[Default]), UsedName(notify,[Default]), UsedName(getClass,[Default]), UsedName(getEmail,[Default]), UsedName(com;example;account;api;request;EmailUpdateRequest;init;,[Default]), UsedName(hashCode,[Default]), UsedName(getAccountId,[Default]), UsedName(email,[Default]))) invalidates 1 classes due to The com.example.account.api.request.EmailUpdateRequest has the following regular definitions changed:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	UsedName(wait,[Default]), UsedName(notifyAll,[Default]), UsedName(EmailUpdateRequest,[Default]), UsedName(toString,[Default]), UsedName(equals,[Default]), UsedName(accountId,[Default]), UsedName(notify,[Default]), UsedName(getClass,[Default]), UsedName(getEmail,[Default]), UsedName(com;example;account;api;request;EmailUpdateRequest;init;,[Default]), UsedName(hashCode,[Default]), UsedName(getAccountId,[Default]), UsedName(email,[Default]).[0m
-[0m[[0m[0mdebug[0m] [0m[0m  > by transitive inheritance: Set(com.example.account.api.request.EmailUpdateRequest)[0m
-[0m[[0m[0mdebug[0m] [0m[0m  > [0m
-[0m[[0m[0mdebug[0m] [0m[0m  > [0m
-[0m[[0m[0mdebug[0m] [0m[0m        [0m
-[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
-[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
-[0m[[0m[0mdebug[0m] [0m[0mFinal step, transitive dependencies:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m

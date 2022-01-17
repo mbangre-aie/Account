@@ -4,14 +4,11 @@
  * This file is part of ARC project.
  * Unauthorised copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
- * Written by ngollapothu
+ * Written by madhan
  *******************************************************/
 package com.example.account.impl.repository.readside;
 
-import com.example.account.api.request.CreateAccountRequest;
-import com.example.account.api.request.DepositRequest;
-import com.example.account.api.request.TransferRequest;
-import com.example.account.api.request.WithdrawRequest;
+import com.example.account.api.request.*;
 import com.example.account.impl.event.AccountEvent;
 import com.lightbend.lagom.javadsl.persistence.AggregateEventTag;
 import com.lightbend.lagom.javadsl.persistence.ReadSideProcessor;
@@ -50,6 +47,7 @@ public class AccountReadSide extends ReadSideProcessor<AccountEvent> {
                 .setEventHandler(AccountEvent.Deposited.class, (con ,evt) -> deposit(con, evt.id(), evt.getRequest()))
                 .setEventHandler(AccountEvent.Withdrawn.class, (con ,evt) -> withdraw(con, evt.id(), evt.getRequest()))
                 .setEventHandler(AccountEvent.Transfered.class, (con ,evt) -> transfer(con, evt.id(), evt.getRequest()))
+                .setEventHandler(AccountEvent.EmailUpdated.class, (con ,evt) -> emailUpdate(con, evt.id(), evt.getRequest()))
                 .build();
     }
 
@@ -124,6 +122,23 @@ public class AccountReadSide extends ReadSideProcessor<AccountEvent> {
             ps.execute();
         } catch (Exception e) {
             log.error("Exception Occurred While transfer amount for Id : {}", entityId, e);
+        }
+    }
+
+    private static final String EMAIL_UPDATE_QUERY = "UPDATE ACCOUNT " +
+            "SET EMAIL = ?," +
+            "LAST_MODIFIED_TMST = now() " +
+            "WHERE ACCOUNT_ID = ?";
+
+    private void emailUpdate(Connection connection, String entityId, EmailUpdateRequest request) {
+        log.info("deposit at read side, ID : {}", entityId);
+        AtomicInteger index = new AtomicInteger();
+        try (PreparedStatement ps = connection.prepareStatement(EMAIL_UPDATE_QUERY)) {
+            ps.setString(index.incrementAndGet(), request.getEmail());
+            ps.setString(index.incrementAndGet(), entityId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            log.error("Exception Occurred While deposit amount for Id : {}", entityId, e);
         }
     }
 }

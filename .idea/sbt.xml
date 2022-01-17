@@ -4,6 +4,7 @@
     <option name="customVMPath" />
     <option name="linkedExternalProjectsSettings">
       <SbtProjectSettings>
+        <option name="enableDebugSbtShell" value="true" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
@@ -16,7 +17,6 @@
             <option value="$PROJECT_DIR$/target/lagom-dynamic-projects/lagom-internal-meta-project-service-locator" />
           </set>
         </option>
-        <option name="sbtVersion" value="1.4.9" />
       </SbtProjectSettings>
     </option>
   </component>
